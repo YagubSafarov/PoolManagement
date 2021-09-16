@@ -1,0 +1,11 @@
+{
+  "name": "net.gameo.pool-management",
+  "displayName": "Pool Management",
+  "version": "0.0.1",
+  "unity": "2019.3",
+  "description": "",
+  "keywords": [],
+  "category": "",
+  "dependencies": {
+  }
+}
