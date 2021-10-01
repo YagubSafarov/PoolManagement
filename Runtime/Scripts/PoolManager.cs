@@ -124,7 +124,16 @@
             {
                 poolListener.OnDisablePoolItem();
             }
-            prefab.transform.SetParent(m_poolParent);
+            if (!prefab.transform.parent.gameObject.activeSelf)
+            {
+                prefab.transform.parent.gameObject.SetActive(true);
+                prefab.transform.SetParent(m_poolParent);
+                prefab.transform.parent.gameObject.SetActive(false);
+            }
+            else
+            {
+                prefab.transform.SetParent(m_poolParent);
+            }
             m_entity[prefab.name].Add(prefab);
             prefab.SetActive(false);
         }
