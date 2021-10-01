@@ -106,6 +106,12 @@
                 m_entity[id].RemoveAt(0);
                 result.transform.SetParent(setForParent);
                 result.SetActive(true);
+                IPoolListener poolListener;
+                if (result.TryGetComponent(out poolListener))
+                {
+                    poolListener.OnEnablePoolItem();
+                }
+
                 return result;
             }
             throw (new System.Exception($"Prefab do't contain in the list {id}"));
@@ -113,9 +119,14 @@
 
         public void Unpool(GameObject prefab)
         {
-            prefab.SetActive(false);
+            IPoolListener poolListener;
+            if (prefab.TryGetComponent(out poolListener))
+            {
+                poolListener.OnDisablePoolItem();
+            }
             prefab.transform.SetParent(m_poolParent);
             m_entity[prefab.name].Add(prefab);
+            prefab.SetActive(false);
         }
     }
 }
