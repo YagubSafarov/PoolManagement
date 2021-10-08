@@ -6,12 +6,12 @@
 
     public class PoolManager : MonoBehaviour
     {
-        [SerializeField]
-        private PoolItem[] m_poolItems;
+        public PoolItem[] PoolItems;
         [SerializeField]
         private Transform m_poolParent;
 
         private Dictionary<string, List<GameObject>> m_entity;
+
 
         private void Awake()
         {
@@ -19,7 +19,7 @@
 
             m_entity = new Dictionary<string, List<GameObject>>();
 
-            foreach (var item in m_poolItems)
+            foreach (var item in PoolItems)
             {
                 if (!m_entity.ContainsKey(item.GetId()))
                 {
@@ -35,11 +35,11 @@
 
         private bool GetPoolItem(string id, out PoolItem poolItem)
         {
-            for (int i = 0, iMax = m_poolItems.Length; i < iMax; i++)
+            for (int i = 0, iMax = PoolItems.Length; i < iMax; i++)
             {
-                if (m_poolItems[i].GetId() == id)
+                if (PoolItems[i].GetId() == id)
                 {
-                    poolItem = m_poolItems[i];
+                    poolItem = PoolItems[i];
                     return true;
                 }
             }
@@ -50,8 +50,7 @@
 
         private void CheckPoolList()
         {
-
-            var duplicates = m_poolItems
+            var duplicates = PoolItems
                 .GroupBy(i => i)
                 .Where(g => g.Count() > 1)
                 .Select(g => g.Key);
