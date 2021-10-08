@@ -48,7 +48,7 @@
             return false;
         }
 
-        private void CheckPoolList()
+        internal void CheckPoolList()
         {
             var duplicates = PoolItems
                 .GroupBy(i => i)
