@@ -50,7 +50,7 @@
             {
                 for (m_tempU = 0, m_tempUMax = m_prefabs[m_tempI].GetInstanceCount(); m_tempU < m_tempUMax; m_tempU++)
                 {
-                    m_tempPoolPrefab = Instantiate(m_prefabs[m_tempI], m_instanceParent);
+                    m_tempPoolPrefab = Instantiate(m_prefabs[m_tempI]);
                     m_tempPoolPrefab.SetId(m_tempI);
                     m_tempPoolPrefab.SetIndex(m_tempU);
 
