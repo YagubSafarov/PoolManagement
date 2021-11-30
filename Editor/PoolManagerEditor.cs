@@ -41,7 +41,9 @@
             {
                 managers[i].InitPrefabs(poolPrefabsArray);
                 EditorUtility.SetDirty(managers[i]);
+                Debug.Log("Modify: " + managers[i]);
             }
+            AssetDatabase.Refresh();
             Debug.Log("End pool scan");
         }
     }
