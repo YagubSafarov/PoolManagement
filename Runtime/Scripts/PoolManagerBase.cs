@@ -85,7 +85,7 @@
             {
                 m_tempPoolPrefab = m_instances[id, m_tempU];
                 if (m_tempPoolPrefab == null)
-                    return;
+                    throw new System.Exception($"Pool not contain inactive item with id: {id}");
 
                 if (!m_tempPoolPrefab.GetActivity())
                 {
@@ -119,7 +119,7 @@
             {
                 m_tempPoolPrefab = m_instances[id, m_tempU];
                 if (m_tempPoolPrefab == null)
-                    return;
+                    throw new System.Exception($"Pool not contain inactive item with id: {id}");
 
                 if (!m_tempPoolPrefab.GetActivity())
                 {
@@ -152,7 +152,9 @@
             {
                 m_tempPoolPrefab = m_instances[id, m_tempU];
                 if (m_tempPoolPrefab == null)
-                    return null;
+                {
+                    throw new System.Exception($"Pool not contain inactive item with id: {id}");
+                }
 
                 if (!m_tempPoolPrefab.GetActivity())
                 {
@@ -171,7 +173,7 @@
                     return m_tempPoolPrefab;
                 }
             }
-            return null;
+            throw new System.Exception($"Pool not contain inactive item with id: {id}");
         }
 
         private void CallInitHandler(GameObject instance)
